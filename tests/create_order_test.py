@@ -9,14 +9,14 @@ class TestCreateOrder:
     @allure.title("Создание пользователя перед тестами")
     @allure.step("Создание пользователя")
     @allure.description("Создает пользователя перед выполнением тестов.")
-    def set_up(self):
+    def setup(self):
         UserApi.create_user("chernyshina15fs@yandex.ru", "18031993", "Анастасия")
 
 
     @allure.title("Удаление пользователя после тестов")
     @allure.step("Удаление пользователя")
     @allure.description("Удаляет пользователя после выполнения тестов.")
-    def tear_down(self):
+    def teardown(self):
         response = UserApi.login_user("chernyshina15fs@yandex.ru", "18031993")
         access_token = response.json().get("accessToken")
         UserApi.delete_user(access_token)
@@ -25,7 +25,7 @@ class TestCreateOrder:
     @allure.step("Создание заказа с авторизацией")
     @allure.description("Тестирует создание заказа с авторизацией.")
     def test_create_order_with_authorization(self):
-        self.set_up()
+
 
         response = UserApi.login_user("chernyshina15fs@yandex.ru", "18031993")
         access_token = response.json().get("accessToken")
@@ -44,13 +44,13 @@ class TestCreateOrder:
         expected_status = True
         assert actual_status == expected_status
 
-        self.tear_down()
+
 
     @allure.title("Создание заказа без авторизации")
     @allure.step("Создание заказа без авторизации")
     @allure.description("Тестирует создание заказа без авторизации.")
     def test_create_order_without_authorization(self):
-        self.set_up()
+
 
         response = OrderApi.get_ingredient()
 
@@ -67,7 +67,7 @@ class TestCreateOrder:
         expected_status = True
         assert actual_status == expected_status
 
-        self.tear_down()
+
 
     @allure.title("Создание заказа без ингредиентов")
     @allure.step("Создание заказа без ингредиентов")
