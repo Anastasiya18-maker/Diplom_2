@@ -25,7 +25,7 @@ class UserApi:
 class TestCreateUser:
 
     @allure.title("Создание пользователя")
-    @allure.step("Создание нового пользователя")
+
     @allure.description("Тестирует создание нового пользователя.")
     def test_we_can_create_user(self):
         response = UserApi.create_user(DataForRegistrationUser().email, DataForRegistrationUser().password, DataForRegistrationUser().name)
@@ -37,7 +37,7 @@ class TestCreateUser:
         UserApi.delete_user(access_token)
 
     @allure.title("Попытка создать пользователя дважды")
-    @allure.step("Создание пользователя с теми же данными дважды")
+
     @allure.description("Тестирует создание пользователя с уже существующими данными.")
     def test_double_create_user(self):
         data = (DataForRegistrationUser().email, DataForRegistrationUser().password, DataForRegistrationUser().name)
@@ -60,7 +60,7 @@ class TestCreateUser:
         UserApi.delete_user(access_token)
 
     @allure.title("Создание пользователя без одного поля")
-    @allure.step("Попытка создать пользователя без обязательного поля")
+
     @allure.description("Тестирует создание пользователя без указания обязательных полей.")
     def test_create_without_one_field(self):
         response = UserApi.create_user("", "18031993", "Анастасия")

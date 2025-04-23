@@ -8,7 +8,7 @@ from API.user_api import UserApi
 class TestEditUser:
 
     @allure.title("Редактирование email пользователя")
-    @allure.step("Редактирование email пользователя")
+
     @allure.description("Тестирует редактирование email пользователя.")
     def test_edit_user_email(self):
         # Создаем пользователя
@@ -32,7 +32,7 @@ class TestEditUser:
         UserApi.delete_user(access_token)
 
     @allure.title("Редактирование пароля пользователя")
-    @allure.step("Редактирование пароля пользователя")
+
     @allure.description("Тестирует редактирование пароля пользователя.")
     def test_edit_user_password(self):
         # Создаем пользователя
@@ -56,7 +56,7 @@ class TestEditUser:
         UserApi.delete_user(access_token)
 
     @allure.title("Попытка редактирования без авторизации")
-    @allure.step("Попытка редактирования без авторизации")
+
     @allure.description("Тестирует попытку редактирования без токена доступа.")
     def test_edit_user_without_authorization(self):
         # Создаем пользователя и логинимся для получения токена доступа

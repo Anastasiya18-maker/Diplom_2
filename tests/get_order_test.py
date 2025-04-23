@@ -12,7 +12,7 @@ class TestGetOrder:
     access_token = None
 
     @allure.title("Получение заказа с авторизацией")
-    @allure.step("Получение заказа с авторизацией")
+
     @allure.description("Тестирует получение заказа с использованием токена доступа.")
     def test_get_order_with_authorization(self):
         # Создаем пользователя
@@ -29,12 +29,13 @@ class TestGetOrder:
         assert response1.status_code == 200  # SC_OK
 
         actual_status = response1.json().get("success")
-        expected_status = True  # В Python булевое значение True
-
-        assert actual_status == expected_status
-
         # Удаляем пользователя после теста
         UserApi.delete_user(self.access_token)
+
+        assert actual_status is True
+
+
+
 
     @allure.title("Получение заказа без авторизации")
     @allure.step("Получение заказа без авторизации")

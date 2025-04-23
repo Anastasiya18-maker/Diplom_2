@@ -10,7 +10,7 @@ class TestLoginUser:
     access_token = None
 
     @allure.title("Авторизация существующего пользователя")
-    @allure.step("Авторизация существующего пользователя")
+
     @allure.description("Тестирует авторизацию с использованием существующего пользователя.")
     def test_login_with_existent_user(self):
         # Создаем пользователя
@@ -31,7 +31,7 @@ class TestLoginUser:
         UserApi.delete_user(self.access_token)
 
     @allure.title("Авторизация несуществующего пользователя")
-    @allure.step("Авторизация несуществующего пользователя")
+
     @allure.description("Тестирует авторизацию с использованием несуществующего пользователя.")
     def test_login_with_not_existent_user(self):
         # Логинимся как несуществующий пользователь

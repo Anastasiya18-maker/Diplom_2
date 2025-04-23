@@ -7,14 +7,14 @@ from API.order_api import OrderApi
 
 class TestCreateOrder:
     @allure.title("Создание пользователя перед тестами")
-    @allure.step("Создание пользователя")
+
     @allure.description("Создает пользователя перед выполнением тестов.")
     def setup(self):
         UserApi.create_user("chernyshina15fs@yandex.ru", "18031993", "Анастасия")
 
 
     @allure.title("Удаление пользователя после тестов")
-    @allure.step("Удаление пользователя")
+
     @allure.description("Удаляет пользователя после выполнения тестов.")
     def teardown(self):
         response = UserApi.login_user("chernyshina15fs@yandex.ru", "18031993")
@@ -22,7 +22,7 @@ class TestCreateOrder:
         UserApi.delete_user(access_token)
 
     @allure.title("Создание заказа с авторизацией")
-    @allure.step("Создание заказа с авторизацией")
+
     @allure.description("Тестирует создание заказа с авторизацией.")
     def test_create_order_with_authorization(self):
 
@@ -47,7 +47,7 @@ class TestCreateOrder:
 
 
     @allure.title("Создание заказа без авторизации")
-    @allure.step("Создание заказа без авторизации")
+
     @allure.description("Тестирует создание заказа без авторизации.")
     def test_create_order_without_authorization(self):
 
@@ -70,7 +70,7 @@ class TestCreateOrder:
 
 
     @allure.title("Создание заказа без ингредиентов")
-    @allure.step("Создание заказа без ингредиентов")
+
     @allure.description("Тестирует создание заказа без указания ингредиентов.")
     def test_create_order_without_ingredients(self):
         ingredients = []
@@ -85,7 +85,7 @@ class TestCreateOrder:
         assert actual_error == expected_error_message
 
     @allure.title("Создание заказа с неверными ингредиентами")
-    @allure.step("Создание заказа с неверными ингредиентами")
+
     @allure.description("Тестирует создание заказа с неверными идентификаторами ингредиентов.")
     def test_create_order_with_false_ingredients(self):
         ingredients = [
